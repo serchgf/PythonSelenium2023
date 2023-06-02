@@ -29,11 +29,10 @@ class TestLandingPage:
         assert select.first_selected_option.text == brand1
         select.deselect_by_visible_text(brand1)
 
-        select.select_by_value(brand2)
+        #select.select_by_value(brand2)
+        select.select_by_visible_text(brand2)
         assert select.first_selected_option.text == brand2
 
-        # for x in select.all_selected_options:
-        #     print(x.text)
 
     def test_old_style_select_multiple_select(self):
         element = self.driver.find_element(By.ID, "cars")
