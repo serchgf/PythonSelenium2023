@@ -34,7 +34,10 @@ class TestLaboratorioQAMinds:
         # get item dolar price
         item_price = self.driver.find_element(By.XPATH, "//div[@class='col-sm-4']//h2")
         # save the dolar value
+
+        print(f"item_price: {item_price.text}")
         dollar_item_price = item_price.text.replace("$","")
+        print(f"dollar_time_price: {dollar_item_price}")
 
         # click on currency button dropdown
         currency_button = self.driver.find_element(By.XPATH, "//div[@class='pull-left']//div/button")
@@ -46,9 +49,11 @@ class TestLaboratorioQAMinds:
 
         # get item euro price
         item_price = self.driver.find_element(By.XPATH, "//div[@class='col-sm-4']//h2")
-        euro_item_price = item_price.text.replace("$", "")
+        print(f"item_price: {item_price.text}")
+        assert "€" in item_price.text, "Symbol '€' should be showed"
+        euro_item_price = item_price.text.replace("€", "")
+        print(f"euro_time_price: {euro_item_price}")
 
-        assert "€" in euro_item_price, "Symbol '€' should be showed"
         assert euro_item_price < dollar_item_price, f"The Euro value: {euro_item_price} should be minor than Dollar Value: {dollar_item_price}"
 
 
